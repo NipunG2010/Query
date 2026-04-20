@@ -1,0 +1,106 @@
+{
+  "theme": "dark",
+  "archetype": "Archetype 4 (Swiss & High-Contrast) + Retro-Futurism Terminal Mode",
+  "domain": "Operator/Signals Intelligence Dashboard",
+  "emotional_tone": "Rigid, precise, secretive, authoritative, information-dense.",
+  "visual_mood": "Deep dark void, high-contrast typography, radar/terminal aesthetic with stark Signal Accents.",
+  "colors": {
+    "background": {
+      "default": "#050505",
+      "surface": "#0a0a0a",
+      "surfaceHover": "#141414",
+      "surfaceActive": "#1a1a1a"
+    },
+    "border": {
+      "default": "#27272a",
+      "highlight": "#3f3f46",
+      "active": "#f59e0b"
+    },
+    "text": {
+      "primary": "#ffffff",
+      "secondary": "#a1a1aa",
+      "tertiary": "#71717a",
+      "accent": "#f59e0b"
+    },
+    "accents": {
+      "brand": "#f59e0b",
+      "amber": "#f59e0b",
+      "signalRed": "#ef4444",
+      "successGreen": "#22c55e",
+      "cyan": "#06b6d4"
+    },
+    "tailwind_config_extensions": {
+      "colors": {
+        "terminal": {
+          "base": "#050505",
+          "surface": "#0a0a0a",
+          "border": "#27272a",
+          "amber": "#f59e0b",
+          "red": "#ef4444",
+          "green": "#22c55e"
+        }
+      }
+    }
+  },
+  "typography": {
+    "primary_font": "IBM Plex Sans, sans-serif",
+    "secondary_font": "IBM Plex Mono, monospace",
+    "tailwind_config_extensions": {
+      "fontFamily": {
+        "sans": ["IBM Plex Sans", "sans-serif"],
+        "mono": ["IBM Plex Mono", "monospace"]
+      }
+    },
+    "usage_rules": {
+      "headings": "MUST use IBM Plex Mono for H1/H2, tracking-tight, uppercase where appropriate (H4/Labels).",
+      "body": "IBM Plex Sans for clean legibility on dense data views.",
+      "metrics": "IBM Plex Mono for all numerical data, timestamps, statuses, and query inputs.",
+      "overline": "IBM Plex Mono, text-xs, uppercase, tracking-[0.2em], text-terminal-amber."
+    }
+  },
+  "layout_spacing": {
+    "grid_strategy": "MODE B: THE CONTROL ROOM GRID (For Dashboards/Analytics). grid-cols-1 md:grid-cols-3 lg:grid-cols-4. gap-4 or gap-6.",
+    "spacing_scale": "Dense and compact for data, generous padding inside main content blocks. Use p-4, p-6.",
+    "surface_strategy": "GRID BORDERS (The 'Technical' Look). Expose the skeleton. border-collapse layouts, 1px subtle borders (border-terminal-border).",
+    "borderRadius": "none or max rounded-sm (2px) to maintain rigid terminal aesthetic. No pill-shaped buttons unless critical for contrast."
+  },
+  "components": {
+    "cards": "Cardless design. Flat background (bg-terminal-surface), 1px solid border-terminal-border, no shadow. Hover: slight border color darken/lighten, no lift.",
+    "buttons": "Square edges. Primary: bg-terminal-amber text-terminal-base hover:bg-yellow-400. Secondary: border border-terminal-border text-white hover:bg-terminal-surface hover:text-terminal-amber.",
+    "inputs": "Flat, bg-transparent, border-b border-terminal-border or fully bordered with square edges. Focus: ring-1 ring-terminal-amber. Use textarea for long Google dork queries.",
+    "badges": "Square, text-xs, font-mono. NEW badge: bg-terminal-amber/20 text-terminal-amber border border-terminal-amber/50.",
+    "tables": "Dense. border-b for rows. font-mono for metrics. No alternating background colors, strictly border separated.",
+    "navigation": "Left sidebar or sticky top header with glassmorphism (bg-black/80 backdrop-blur-xl border-b border-terminal-border). Keep it stark."
+  },
+  "motion": {
+    "hover": "Instant or 150ms ease. No bouncy animations.",
+    "entrance": "Fade in with subtle 5px Y-axis translate (duration 200ms).",
+    "interactions": "Focus rings must be stark Amber. Use data-testid for all interactive elements."
+  },
+  "iconography": {
+    "library": "lucide-react",
+    "usage": "Use stroke-width 1.5 or 2. Keep icons sharp and unembellished. Prefer terminal/radar metaphors (Activity, Crosshair, Terminal, Radio, Radar, Target)."
+  },
+  "images_and_media": {
+    "radar_bg": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/06f896c8-3b29-413b-b0ba-199323ee036c/images/cc00b87a58f5c50c175f553849e3b433c0f1058a7f200bec907d135e64e6b929.png",
+      "description": "Minimalist dark mode abstract background, subtle radar topography lines, high contrast stark white and amber glowing points on deep true black canvas, editorial terminal aesthetic.",
+      "usage": "Login screen background, or masked over the top header for texture (opacity-20)."
+    },
+    "empty_state_data": {
+      "url": "https://static.prod-images.emergentagent.com/jobs/06f896c8-3b29-413b-b0ba-199323ee036c/images/3f4f46bc94f81dc81bf267687af18b28f3d69c04c5e8ad168b4eb59d2fdf9d26.png",
+      "description": "Abstract minimalist data visualization, dark mode, geometric precision.",
+      "usage": "Use as an illustration for empty states (e.g., 'No queries monitored yet' or 'No new URLs discovered')."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Install and configure 'lucide-react' for icons.",
+    "Implement the UI with a strict dark mode (bg-[#050505]). Do NOT use generic Slate or Gray.",
+    "Fonts: Import IBM Plex Mono and IBM Plex Sans from Google Fonts. Apply them via Tailwind config.",
+    "Build the dashboard using a 'Control Room' dense grid.",
+    "Ensure all metric numbers, URLs, and status indicators use the monospace font.",
+    "The NEW badge for newly found URLs must be visually distinct, using the terminal amber color.",
+    "Data density is paramount. Avoid excessive padding; rely on borders to separate content.",
+    "All interactive elements MUST have a data-testid attribute in kebab-case."
+  ]
+}
