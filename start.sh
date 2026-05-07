@@ -7,22 +7,18 @@ set -e
 # serves both /api/* endpoints and the built frontend as static files.
 # ---------------------------------------------------------------------------
 
-# Load .env if present (Railway injects vars directly; this is for local use)
+# Defaults (Railway "Variables" tab will override any of these).
+export MONGO_URL="${MONGO_URL:-mongodb+srv://nipun_db_user:R87Z513xxqJllYpf@cluster0.tgywovi.mongodb.net/?retryWrites=true&w=majority}"
+export DB_NAME="${DB_NAME:-Cluster0}"
+export SERPAPI_KEY="${SERPAPI_KEY:-a7c4cf8065b33a5ef7a57fb136034a51a9e7ef90706ea401037dc32d9ee64cba}"
+export CORS_ORIGINS="${CORS_ORIGINS:-*}"
+
+# Load .env if present (local dev; Railway injects vars directly)
 if [ -f .env ]; then
   set -a
   . ./.env
   set +a
 fi
-
-# Required env (set these in Railway → Variables):
-#   MONGO_URL     e.g. mongodb+srv://user:pass@cluster.mongodb.net
-#   DB_NAME       e.g. radar
-#   SERPAPI_KEY   from https://serpapi.com/manage-api-key
-#   CORS_ORIGINS  "*" or your domain
-: "${MONGO_URL:?MONGO_URL not set}"
-: "${DB_NAME:?DB_NAME not set}"
-: "${SERPAPI_KEY:?SERPAPI_KEY not set}"
-export CORS_ORIGINS="${CORS_ORIGINS:-*}"
 
 # Backend deps
 pip install --no-cache-dir -r backend/requirements.txt
