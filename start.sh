@@ -10,7 +10,7 @@ export DB_NAME="${DB_NAME:-Cluster0}"
 export SERPAPI_KEY="${SERPAPI_KEY:-a7c4cf8065b33a5ef7a57fb136034a51a9e7ef90706ea401037dc32d9ee64cba}"
 export CORS_ORIGINS="${CORS_ORIGINS:-*}"
 
-exec uvicorn server:app \
+exec python -m uvicorn server:app \
   --app-dir backend \
   --host 0.0.0.0 \
   --port "${PORT:-8001}"
