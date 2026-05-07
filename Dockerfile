@@ -18,7 +18,7 @@ RUN pip install --no-cache-dir -r backend/requirements.txt
 
 # Build frontend
 WORKDIR /app/frontend
-RUN npm install && npm run build
+RUN npm install --legacy-peer-deps && npm run build
 
 WORKDIR /app
 
