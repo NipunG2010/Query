@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "packages": {
+    "python": "3.11",
+    "node": "20"
+  },
+  "steps": {
+    "install": {
+      "commands": [
+        "pip install --no-cache-dir -r backend/requirements.txt",
+        "(cd frontend && yarn install --frozen-lockfile)"
+      ]
+    },
+    "build": {
+      "inputs": [{ "step": "install" }],
+      "commands": [
+        "(cd frontend && REACT_APP_BACKEND_URL='' yarn build)"
+      ]
+    }
+  },
+  "deploy": {
+    "startCommand": "bash start.sh"
+  }
+}
