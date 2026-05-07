@@ -21,7 +21,7 @@ if [ -f .env ]; then
 fi
 
 # Backend deps
-python -m pip install --no-cache-dir -r backend/requirements.txt
+python3 -m pip install --no-cache-dir -r backend/requirements.txt
 
 # Frontend build (same-origin: API served at /api on the same host)
 export REACT_APP_BACKEND_URL=""
