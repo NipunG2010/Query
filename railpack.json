@@ -8,7 +8,7 @@
     "install": {
       "commands": [
         "pip install --no-cache-dir -r backend/requirements.txt",
-        "corepack enable",
+        "npm install -g yarn",
         "(cd frontend && yarn install --frozen-lockfile)"
       ]
     },
