@@ -4,6 +4,8 @@ Polls SerpAPI for new pages matching user-defined long-tail Google queries.
 """
 from fastapi import FastAPI, APIRouter, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel, Field
@@ -536,3 +538,21 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve the built React frontend (Railway single-service deploy).
+# In dev (no build dir present) this is silently skipped.
+_FRONTEND_BUILD = ROOT_DIR.parent / "frontend" / "build"
+if _FRONTEND_BUILD.is_dir():
+    app.mount(
+        "/static",
+        StaticFiles(directory=_FRONTEND_BUILD / "static"),
+        name="static",
+    )
+
+    @app.get("/{full_path:path}")
+    async def spa_fallback(full_path: str):
+        # Serve specific file if it exists in build/, else fall back to index.html
+        candidate = _FRONTEND_BUILD / full_path
+        if full_path and candidate.is_file():
+            return FileResponse(candidate)
+        return FileResponse(_FRONTEND_BUILD / "index.html")
