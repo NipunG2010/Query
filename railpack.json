@@ -7,7 +7,8 @@
   "steps": {
     "install": {
       "commands": [
-        "pip install --no-cache-dir -r backend/requirements.txt",
+        "python -m venv /app/.venv",
+        "/app/.venv/bin/pip install --no-cache-dir -r backend/requirements.txt",
         "npm install -g yarn",
         "(cd frontend && yarn install --frozen-lockfile)"
       ]
