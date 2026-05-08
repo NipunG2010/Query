@@ -552,6 +552,8 @@ if _FRONTEND_BUILD.is_dir():
 
     @app.get("/{full_path:path}")
     async def spa_fallback(full_path: str):
+        if full_path.startswith("api/"):
+            raise HTTPException(status_code=404, detail="API route not found")
         # Serve specific file if it exists in build/, else fall back to index.html
         candidate = _FRONTEND_BUILD / full_path
         if full_path and candidate.is_file():
