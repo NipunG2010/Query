@@ -528,9 +528,6 @@ async def get_stats():
         last_run_at=last_run_at,
     )
 
-
-app.include_router(api)
-
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
@@ -538,6 +535,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(api)
+
+
 
 # Serve the built React frontend (Railway single-service deploy).
 # In dev (no build dir present) this is silently skipped.
