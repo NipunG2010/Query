@@ -13,4 +13,4 @@ export CORS_ORIGINS="${CORS_ORIGINS:-*}"
 exec /app/.venv/bin/python -m uvicorn server:app \
   --app-dir backend \
   --host 0.0.0.0 \
-  --port "${PORT:-8001}"
+  --port "${PORT:-8080}"
